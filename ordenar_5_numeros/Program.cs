@@ -1,27 +1,33 @@
-﻿int[] numeros = new int[5];
-int aux = 0;
+﻿int[] numeros = new int[5], ordenado = new int[5];
+int aux = 0, menor = 0, j = 0, maior = 0;
 
-Console.WriteLine("Escreva 5 números inteiros");
+Console.WriteLine("Escreva 5 números inteiros positivos");
 for (int i = 0; i < 5; i++)
 {
     Console.WriteLine($"Escreva o {i+1}º número");
     numeros[i] = int.Parse(Console.ReadLine());
 }
 
-for (int i = 0;i < 5; i++)
+for (int i = 0; i < 5; i++)
 {
-    for (int j = 0; j < 4; j++)
+    ordenado[i] = numeros[i];
+}
+
+for(int i = 0; i < 5; i++)
+{
+    for (j = i + 1; j < 5; j++)
     {
-        if (numeros[j] > numeros[j + 1])
+        if (ordenado[i] > ordenado[j])
         {
-            aux = numeros[j + 1];
-            numeros[j + 1] = numeros[j];
-            numeros[j] = aux;
+            aux = ordenado[j];
+            ordenado[j] = ordenado[i];
+            ordenado[i] = aux;
         }
     }
 }
-Console.WriteLine("Números Ordenados:");
+
+Console.WriteLine("Numeros ordenados:");
 for (int i = 0; i < 5 ; i++)
 {
-    Console.WriteLine(numeros[i]);
+    Console.WriteLine(ordenado[i]);
 }
